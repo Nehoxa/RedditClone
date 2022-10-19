@@ -12,7 +12,7 @@
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-        <div v-if="$page.props.flash.message" class="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700"
+        <div v-if="$page.props.flash.message" :class="$page.props.flash.class" class="flex rounded-lg p-4 mb-4 text-sm"
           role="alert">
           <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
@@ -53,7 +53,7 @@
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
-                    <tr v-for="community in communities" :key="community.id">
+                    <tr v-for="community in communities.data" :key="community.id">
                       <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {{ community.name }}
                       </td>
@@ -70,6 +70,9 @@
                     <!-- More people... -->
                   </tbody>
                 </table>
+                <div class="m-2 p-2">
+                  <Pagination :links="communities.links" />
+                </div>
               </div>
             </div>
           </div>
@@ -83,6 +86,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import Pagination from '../../Components/Pagination.vue'
 
 defineProps({
   communities: Object
