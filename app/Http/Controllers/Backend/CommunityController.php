@@ -17,7 +17,7 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        $communities = Community::paginate(5)->through(fn($community) => [
+        $communities = Community::paginate(5)->through(fn ($community) => [
             'id' => $community->id,
             'name' => $community->name,
             'slug' => $community->slug
@@ -45,7 +45,7 @@ class CommunityController extends Controller
     {
         Community::create($request->validated() + ['user_id' => auth()->id()]);
 
-        return to_route('communities.index')->with(['message' => 'Community updated !', 'class' => 'bg-green-100  text-green-700']);
+        return to_route('communities.index')->with(['message' => 'Community created !', 'class' => 'bg-green-100  text-green-700']);
     }
 
     /**
@@ -92,6 +92,6 @@ class CommunityController extends Controller
     public function destroy(Community $community)
     {
         $community->delete();
-        return back()->with(['message' => 'Community updated !', 'class' => 'bg-red-100  text-red-700']);
+        return back()->with(['message' => 'Community deleted !', 'class' => 'bg-red-100  text-red-700']);
     }
 }
