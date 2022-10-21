@@ -87,7 +87,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 import Pagination from '../../Components/Pagination.vue'
 
 defineProps({
-  communities: Object
+  communities: Object,
 });
 
 </script>
