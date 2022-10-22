@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Community extends Model 
+class Community extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -29,5 +31,15 @@ class Community extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 }
