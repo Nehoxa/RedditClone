@@ -39,7 +39,8 @@
                 <table class="min-w-full divide-y divide-gray-300">
                   <thead class="bg-gray-50">
                     <tr>
-                      <th scope="col" class="w-2/5 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                      <th scope="col"
+                        class="w-2/5 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                         Name
                       </th>
                       <th scope="col" class="w-2/5 px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -52,8 +53,8 @@
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
                     <tr v-for="community in communities.data" :key="community.id">
-                      <td href="" class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {{ community.name }}
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                        <Link :href="route('frontend.communties.show', community.slug)"> {{ community.name }}</Link>
                       </td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {{ community.slug }}
