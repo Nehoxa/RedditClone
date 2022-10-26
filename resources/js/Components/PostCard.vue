@@ -1,5 +1,5 @@
 <template>
-  <div class="p-6 mb-4 max-w-4xl flex bg-white rounded-lg border border-gray-200 shadow-m">
+  <div class="p-6 mb-4 max-w-4xl flex bg-white rounded-lg border border-gray-200 shadow-m hover:border-gray-800">
     <div class="mr-3">upvote</div>
     <div>
       <div class="flex m-2 p-2">
@@ -14,16 +14,18 @@
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ post.description }}</p>
       <div class="flex m-2 p-2">
         <p class="mr-4 p-2">Comments(2)</p>
-        <a href="#"
+        <Link :href="route('frontend.communities.posts.show', [community, post.slug])"
           class="inline-flex items-center py-2 px-3 text-sm text-center text-white bg-indigo-600 rounded-md font-semibold">
           Read more
-        </a>
+        </Link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/inertia-vue3';
+
 
 defineProps({
   post: Object,
