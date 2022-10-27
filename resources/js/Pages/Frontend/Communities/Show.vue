@@ -47,7 +47,7 @@ import Pagination from '@/Components/Pagination.vue';
 
 defineProps({
   communities: Object,
-  posts: Object
+  posts: Object,
 });
 
 </script>
