@@ -53,7 +53,7 @@
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
                     <tr v-for="community in communities.data" :key="community.id">
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-blue-500 sm:pl-6 hover:text-blue-700">
                         <Link :href="route('frontend.communities.show', community.slug)"> {{ community.name }}</Link>
                       </td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -62,8 +62,9 @@
                       <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <Link :href="route('communities.edit', community.slug)"
                           class="text-indigo-600 hover:text-indigo-900 mr-5">Edit</Link>
-                        <Link :href="route('communities.destroy', community.slug)" class="text-red-600 hover:text-red-900"
-                          method="delete" as="button" type="button">Delete</Link>
+                        <Link :href="route('communities.destroy', community.slug)"
+                          class="text-red-600 hover:text-red-900" method="delete" as="button" type="button">Delete
+                        </Link>
                       </td>
                     </tr>
                     <!-- More people... -->

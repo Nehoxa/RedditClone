@@ -35,7 +35,7 @@ const showingNavigationDropdown = ref(false);
 
                         </div>
 
-                        <div v-if="$page.props.auth.user" class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div v-if="$page.props.auth.auth_check" class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <Dropdown align="right" width="48">
@@ -67,17 +67,26 @@ const showingNavigationDropdown = ref(false);
                             </div>
                         </div>
 
+                        <div class="flex items-center" v-else>
+                            <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                            Log in</Link>
+
+                            <Link :href="route('register')"
+                                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</Link>
+                        </div>
+
+
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown"
+                            <button @click="showingNavigationDropdown = !showingNavigationDropdown"
                                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path
-                                        :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }"
+                                        :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16" />
                                     <path
-                                        :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
+                                        :class="{ 'hidden': !showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -87,10 +96,11 @@ const showingNavigationDropdown = ref(false);
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}"
+                <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }"
                     class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('communities.index')" :active="route().current('communities.index')">
+                        <ResponsiveNavLink :href="route('communities.index')"
+                            :active="route().current('communities.index')">
                             Communities
                         </ResponsiveNavLink>
                     </div>
