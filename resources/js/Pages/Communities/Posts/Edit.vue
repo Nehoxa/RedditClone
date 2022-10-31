@@ -55,16 +55,15 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+const props = defineProps({
+  post: Object,
+  community: Object,
+});
+
 const form = useForm({
   title: props.post?.title,
   description: props.post?.description,
   url: props.post?.url,
-});
-
-
-const props = defineProps({
-  post: Object,
-  community: Object,
 });
 
 const submit = () => {
