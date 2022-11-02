@@ -1,6 +1,8 @@
 <template>
-  <div class="p-6 mb-4 max-w-4xl flex bg-white rounded-lg border border-gray-200 shadow-m hover:border-gray-800">
-    <div class="mr-3">upvote</div>
+  <div class="mb-4 max-w-4xl flex bg-white rounded-lg border border-gray-200 shadow-m hover:border-gray-800">
+    <div class="mr-3">
+      <PostVote :post="post" />
+    </div>
     <div>
       <div class="flex m-2 p-2">
         <span class="font-semibold mr-3">r/{{ community }}</span>
@@ -25,6 +27,7 @@
 
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3';
+import PostVote from '@/Components/PostVote.vue'
 
 
 defineProps({
