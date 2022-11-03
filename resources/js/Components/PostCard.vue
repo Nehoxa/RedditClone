@@ -15,7 +15,7 @@
       </a>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ post.description }}</p>
       <div class="flex m-2 p-2">
-        <p class="mr-4 p-2">Comments(2)</p>
+        <p class="mr-4 p-2">Comments({{ post.comments_count }})</p>
         <Link :href="route('frontend.communities.posts.show', [community, post.slug])"
           class="inline-flex items-center py-2 px-3 text-sm text-center text-white bg-indigo-600 rounded-md font-semibold">
           Read more

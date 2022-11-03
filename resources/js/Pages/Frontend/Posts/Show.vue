@@ -59,7 +59,7 @@
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-200"></textarea>
                     </div>
                     <div class="mt-2">
-                      <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Comment</button>
+                      <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" preserve-scroll>Comment</button>
                     </div>
                   </form>
                 </div>
