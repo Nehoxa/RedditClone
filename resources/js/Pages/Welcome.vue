@@ -7,16 +7,16 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-end">
         </div>
-
         <section class="flex md:flex-row">
           <div class="w-3/4">
             <PostCard v-for="post in posts.data" :post="post" :community="post.community_slug" :key="post.id" />
           </div>
           <div class="w-1/4">
-            <div class="p-4 bg-slate-500 text-white rounded-lg">
-              <h2>Top Communities</h2>
-              <CommunityList :communities="communities" />
-            </div>
+            <CommunityList :communities="communities">
+              <template #title>
+                Top Communities
+              </template>
+            </CommunityList>
           </div>
         </section>
       </div>

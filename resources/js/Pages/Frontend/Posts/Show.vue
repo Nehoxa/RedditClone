@@ -6,12 +6,16 @@
           <div class="w-full md:w-3/4">
             <div class="mr-4 px-4 py-2 bg-white rounded-full w-min">
               <h2 class="font-semibold text-2xl text-black">
-                <Link :href="route('frontend.communities.show', community.slug)">
+                <Link :href="route('frontend.communities.show', community.slug)" class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 mr-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
                 r/{{ community.name }}
                 </Link>
               </h2>
             </div>
-            <div class="m-2 bg-white rounded-lg flex">
+            <div class="my-2 mr-4 bg-white rounded-lg flex">
               <div>
                 <PostVote :post="post.data" />
               </div>
@@ -59,7 +63,8 @@
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-200"></textarea>
                     </div>
                     <div class="mt-2">
-                      <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" preserve-scroll>Comment</button>
+                      <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
+                        preserve-scroll>Comment</button>
                     </div>
                   </form>
                 </div>
@@ -67,9 +72,14 @@
             </div>
           </div>
           <div class="w-full md:w-1/4">
-            <div class="p-2 bg-slate-500 text-white rounded-lg">
-              <h2>Latests Communities</h2>
-            </div>
+            <PostList 
+              :community="community"
+              :posts="posts"
+              class="mt-16">
+              <template #title>
+                Latest Posts
+              </template>
+            </PostList>
           </div>
         </section>
       </div>
@@ -78,6 +88,7 @@
 </template>
 
 <script setup>
+import PostList from '@/Components/PostList.vue';
 import PostVote from '@/Components/PostVote.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue'
 import { Link, useForm } from '@inertiajs/inertia-vue3';
@@ -85,6 +96,7 @@ import { Link, useForm } from '@inertiajs/inertia-vue3';
 const props = defineProps({
   community: Object,
   post: Object,
+  posts: Object,
 });
 
 const form = useForm({
