@@ -25,14 +25,14 @@
                     <Link href="" class="text-slate-700 hover:underline">{{ post.data.username }}</Link>
                     at {{ post.data.created_at }}
                   </span>
-                  <div v-if="$page.props.auth.auth_check && post.data.owner">
-                    <Link :href="route('communities.posts.edit', [community.slug, post.data.slug])"
-                      class="text-white bg-blue-500 font-semibold mr-2 hover:bg-blue-700 p-2 rounded-md">
+                  <div v-if="$page.props.auth.auth_check">
+                    <Link v-if="can_update" :href="route('communities.posts.edit', [community.slug, post.data.slug])"
+                      class="text-white bg-blue-500 font-semibold hover:bg-blue-700 p-2 rounded-md">
                     Edit
                     </Link>
-                    <Link :href="route('communities.posts.destroy', [community.slug, post.data.slug])" method="delete"
+                    <Link v-if="can_delete" :href="route('communities.posts.destroy', [community.slug, post.data.slug])" method="delete"
                       as="button" type="button"
-                      class="text-white bg-red-500 font-semibold hover:bg-red-700 p-2 rounded-md">
+                      class="text-white bg-red-500 font-semibold ml-2 hover:bg-red-700 p-2 rounded-md">
                     Delete
                     </Link>
                   </div>
@@ -97,6 +97,8 @@ const props = defineProps({
   community: Object,
   post: Object,
   posts: Object,
+  can_update: Boolean,
+  can_delete: Boolean,
 });
 
 const form = useForm({
