@@ -23,7 +23,7 @@
                 <div class="text-sm text-slate-400 flex flex-col md:flex-row justify-between my-2">
                   <span>Posted by
                     <Link href="" class="text-slate-700 hover:underline">{{ post.data.username }}</Link>
-                    at {{ post.data.created_at }}
+                    {{ post.data.created_at }}
                   </span>
                   <div v-if="$page.props.auth.auth_check">
                     <Link v-if="can_update" :href="route('communities.posts.edit', [community.slug, post.data.slug])"
