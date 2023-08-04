@@ -1,11 +1,11 @@
 <template>
 
-  <Head title="Create Community" />
+  <Head title="Edit Community" />
 
   <AuthenticatedLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Create Post for {{ community.name }}
+        Update Post for {{ community.name }}
       </h2>
     </template>
 
@@ -13,7 +13,7 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="max-w-md mx-auto bg-white m-2 p-6 rounded">
           <form @submit.prevent="submit">
-
+            
             <div>
               <InputLabel for="title" value="Title" />
               <TextInput id="title" type="text" class="mt-1 block w-full" v-model="form.title" autofocus
